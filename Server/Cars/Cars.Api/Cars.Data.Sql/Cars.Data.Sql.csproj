@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cars.Common\Cars.Common.csproj" />
+      <ProjectReference Include="..\Cars.Domain\Cars.Domain.csproj" />
+      <ProjectReference Include="..\Cars.IData\Cars.IData.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.10" />
+    </ItemGroup>
+
+</Project>

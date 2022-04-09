@@ -1,0 +1,30 @@
+#wersja docker compose
+version: '3.3'
+
+#lista serwisów, które składają się na "kompozycję" (nie wiem jak to po polsku nazwać) 
+services:
+  #nazwa pierwszego serwisu (baza danych)
+  maria_db:
+    #obraz dockerowy (jeżeli nie ma takiego lokalnie, to pobierze z internetu z docker hub)
+    image: mariadb
+    #ustawienie automatycznego restartu kontenera po jego wyłączeniu 
+    restart: always
+    #ustawienie zmiennych środowiskowych 
+    environment:
+      #ustawienie hasła dla użytkownika root
+      MYSQL_ROOT_PASSWORD: 
+    #ustawienie portu (pierwszy odpowiada za port na komputerze/serwerze drugi za port w kontenerze)
+    ports:
+      - 3307:3306
+  #nazwa drugiego serwisu (API)
+  api:
+    #ustawienie zależności serwisu api od serwisu maria_db
+    depends_on:
+      - maria_db
+    image: carsapi_v2
+    #nazwa konteneru po wystartowaniu
+    container_name: carsapi_v2
+    environment:
+      - PORT=5000
+    ports:
+      - '5000:5000'

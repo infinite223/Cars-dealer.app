@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+
+  maria_db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass 
+    ports:
+      - 3307:3306

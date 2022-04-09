@@ -1,0 +1,42 @@
+.Ad{
+    flex-direction: column;
+
+    width: max-content;
+    min-width: 370px;
+    height: 250px;
+
+    background-color: rgb(235, 233, 238);
+
+    margin: 4px auto;
+
+    h3 {
+        letter-spacing: .3em;
+    }
+
+    &:hover{
+        background-color: rgba(235, 233, 238, 0.449); 
+        cursor: pointer;
+    }
+}
+
+.full__Ad{
+    position: fixed;
+    z-index: 5;
+    width: 900px;
+    height: 460px;
+    left: 50%;
+    top:50%;
+    margin-top: -230px;
+    margin-left: -450px;
+    
+    background-color: rgb(243, 240, 240);
+
+
+    .exit-icon{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+
+        cursor: pointer;
+    }
+}
