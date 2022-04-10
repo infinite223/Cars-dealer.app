@@ -10,6 +10,7 @@ import { NavContent } from "../Components/NavContent/NavContent.tsx"
 export const MainPage = () => {
   const [open, cycleOpen] = useCycle(true, false);
   const [statusLogin, setStatusLogin] = useState(false)
+  const [refreshAds, setRefreshAds] = useState(false)
 
   console.log(statusLogin)
 
@@ -36,7 +37,7 @@ export const MainPage = () => {
                       <div className='nav-open' >
                         <MdOutlineArrowBackIos size={25} onClick={cycleOpen}>{open ? "Close" : "Open"}</MdOutlineArrowBackIos>
                       </div>
-                      <NavContent statusLogin={statusLogin} setStatusLogin={setStatusLogin}/>
+                      <NavContent refreshAds={refreshAds} setRefreshAds={setRefreshAds} statusLogin={statusLogin} setStatusLogin={setStatusLogin}/>
                   </motion.div>             
                 </motion.nav>}                    
              </AnimatePresence>
@@ -49,7 +50,7 @@ export const MainPage = () => {
 
                   {statusLogin &&<button onClick={()=>setStatusLogin(false)}>Logout</button>}
                 </div>
-                <Ads/>
+                <Ads refreshAds={refreshAds}/>
             </div>
     </div>
   )
