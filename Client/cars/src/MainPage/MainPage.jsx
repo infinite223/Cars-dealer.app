@@ -12,7 +12,7 @@ export const MainPage = () => {
   const [statusLogin, setStatusLogin] = useState(false)
   const [refreshAds, setRefreshAds] = useState(false)
 
-  console.log(statusLogin)
+  console.log(refreshAds)
 
   return (
     <div className='mainPage'>
@@ -41,7 +41,7 @@ export const MainPage = () => {
                   </motion.div>             
                 </motion.nav>}                    
              </AnimatePresence>
-
+                  
             <div className='content flex'>
                 <div className='content__nav'>
                   {!open &&<motion.div className='nav-close' >

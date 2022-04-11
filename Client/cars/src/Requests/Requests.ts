@@ -6,6 +6,19 @@ export const fetchAds = async () => {
 };
 
 export const addAds = async ( newAd ) => {
-    const { data: ad } = await axios.post("http://localhost:5000/api/v2/ad",newAd);
-    return ad!=null?"dodano":"nie udało się dodać";
+    if(newAd.TitleAd && newAd.TitleAd!==null){
+        const { data: ad } = await axios.post("http://localhost:5000/api/v2/ad",newAd);
+        return ad!=null?"dodano":"nie udało się dodać";
+    }
   };
+
+  export const randomImagesCars = [
+    "https://samochody.pl/api/proxy/photo/26800650-3f9a-11eb-bdf1-1f25f7028f1e/cover",
+    "https://www.wyborkierowcow.pl/wp-content/uploads/2020/08/opel-astra-cennik-2021-otwarcie.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfztSoaRdgw2XwzCa_clLKjHb-xCVwFLBHcg&usqp=CAU",
+    "https://www.wyborkierowcow.pl/wp-content/uploads/2022/01/Fiat-500e-02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/8/81/Polski_Fiat_126p_rocznik_1973.jpg",
+    "https://ocdn.eu/pulscms-transforms/1/jQ8ktkpTURBXy80Yzc0ODcwMjIxYjlkYjIxOWUzYWQ1ZjY0Y2Q3MjQ4MC5qcGeRlQPNATTNAU_NBpzNA7g",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/VW_Passat_B5.jpg/1200px-VW_Passat_B5.jpg",
+    "https://i.wpimg.pl/1920x0/m.autokult.pl/audi-a4-to-c7b33837cde1c592379b2.jpg"
+  ]

@@ -13,7 +13,6 @@ export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLo
     "TitleAd":model,
     "DescriptionAd":description
   }
-
   return (
     <div className='nav__content flex'>
         { !statusLogin ? <>
