@@ -1,9 +1,12 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Cars.Api.Mappers;
 using Cars.Api.Validation;
 using Cars.Data.Sql;
 using Cars.IServices.User;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MySqlX.XDevAPI.Common;
 
 namespace Cars.Api.Controllers
 {
@@ -30,6 +33,20 @@ namespace Cars.Api.Controllers
                 return Ok(UserToUserViewModelMapper.UserToUserViewModel(user));
             }
             return NotFound();
+        }
+        
+        [HttpGet("login/{login}/{password}", Name = "loginUser")]
+        public async Task<IActionResult> LoginUser(string login, string password)
+        {
+            var user = await _context.User.FirstOrDefaultAsync(x => x.Login == login);
+            if (user.Password==password)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
         
         [HttpGet("name/{userName}", Name = "GetUserByUserName")]

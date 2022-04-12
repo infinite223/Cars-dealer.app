@@ -12,8 +12,6 @@ export const MainPage = () => {
   const [statusLogin, setStatusLogin] = useState(false)
   const [refreshAds, setRefreshAds] = useState(false)
 
-  console.log(refreshAds)
-
   return (
     <div className='mainPage'>
             <AnimatePresence>   

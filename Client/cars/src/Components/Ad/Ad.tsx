@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AiOutlineCloseSquare } from "react-icons/ai"
 import "./Ad.scss"
 import { randomImagesCars } from '../../Requests/Requests.ts'
+import loupe from "../../icons/loupe.png"
 
 export const Ad = ({ adId, title, description, image}) => {
   const [toggleFullAd, setToggleFullAd] = useState(false)
@@ -9,18 +10,24 @@ export const Ad = ({ adId, title, description, image}) => {
   return (
     <>
       <div className='Ad flex' onClick={() =>setToggleFullAd(true)}>
+        <div className='Ad-loupe'><img src={loupe} width="80px"/></div>  
         <div className="Ad-id">id: {adId}</div>
-        <img className='Ad-image' src={image}/>
+          {image ?<img className='Ad-image' src={image}/>:<text className='Ad-no-images flex'>No images</text>}
         <div className='Ad-info'>
           <h3>{title}</h3>
-          <text>price:<text className='text-price'>40 000 PLN</text></text>
+         <text className='text-price'>{Math.floor(Math.random() * (100000 - 10000 + 1)) + 10000} PLN</text>
         </div>
       </div>
       {toggleFullAd &&
         <div className='full__Ad'>
           <AiOutlineCloseSquare size={32} className='exit-icon' onClick={()=>setToggleFullAd(false)}/>
-          <h3>{title}</h3>
-        <p>{description}</p>
+          <div className='full_Ad-img'>
+            <img src={image}/>
+          </div>
+          <div className='full_Ad-info'>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </div>
         </div>
       }
     </>

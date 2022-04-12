@@ -12,10 +12,27 @@ export const addAds = async ( newAd ) => {
     }
   };
 
+export const userAds = async ( userId ) => {
+  if(userId){
+    const { data: userAds } = await axios.get(`https://localhost:5001/api/v2/ad/userAds/${userId}`);
+    return userAds;
+  }
+};
+
+export const loginUser = async (login, password) => {
+
+  try{
+    const { data: user } = await axios.get(`https://localhost:5001/api/v2/user/login/${login}/${password}`);
+    return user;
+  }catch(error){
+    return "error";
+  }
+};
+
   export const randomImagesCars = [
     "https://samochody.pl/api/proxy/photo/26800650-3f9a-11eb-bdf1-1f25f7028f1e/cover",
     "https://www.wyborkierowcow.pl/wp-content/uploads/2020/08/opel-astra-cennik-2021-otwarcie.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfztSoaRdgw2XwzCa_clLKjHb-xCVwFLBHcg&usqp=CAU",
+    "https://www.gieldaklasykow.pl/wp-content/uploads/2021/07/opel-vectra-c-003-672x372.jpg",
     "https://www.wyborkierowcow.pl/wp-content/uploads/2022/01/Fiat-500e-02.jpg",
     "https://upload.wikimedia.org/wikipedia/commons/8/81/Polski_Fiat_126p_rocznik_1973.jpg",
     "https://ocdn.eu/pulscms-transforms/1/jQ8ktkpTURBXy80Yzc0ODcwMjIxYjlkYjIxOWUzYWQ1ZjY0Y2Q3MjQ4MC5qcGeRlQPNATTNAU_NBpzNA7g",

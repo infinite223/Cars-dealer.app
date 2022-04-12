@@ -33,6 +33,12 @@ namespace Cars.Api.Controllers
             }
             return NotFound();
         }
+        [HttpGet("userAds/{userId:min(1)}", Name = "GetAdsByUserId")]
+        public async Task<IActionResult> GetAdsByUserId(int userId)
+        {
+            var ads = _context.Ad.Where(x => x.UserId == userId);
+            return Ok(ads);
+        }
         [HttpGet("allAds", Name = "GetAllAds")]
         public async Task<IActionResult> GetAds()
         {

@@ -1,8 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import './NavContent.scss'
 import { addAds } from '../../Requests/Requests.ts'
+import { loginUser } from '../../Requests/Requests.ts'
 export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLogin }) => {
+  const [login, setLogin] = useState("")
+  const [password, setPassword] = useState("")
+  const [errorLogin, setErrorLogin] = useState("")
+
   const [model, setModel] = useState("")
   const [category, setCategory] = useState(Number)
   const [description, setDescription] = useState("")
@@ -13,15 +18,29 @@ export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLo
     "TitleAd":model,
     "DescriptionAd":description
   }
+
+  const userStatus = async (event) =>{
+    event.preventDefault();
+    const user = await loginUser(login, password)
+    if(user!="error"){
+      setStatusLogin(true);
+      setErrorLogin("")
+    }
+    else{
+      setErrorLogin("Nieprawidłowe dane")
+    }
+  }
+  
   return (
     <div className='nav__content flex'>
         { !statusLogin ? <>
           <h2>Cars.<br /> dealer</h2>
           <hr />
           <p>Zaloguj się by móc dodawać swoje ogłoszenia</p>
-          <input type="text" placeholder='Login'/>
-          <input type="password" placeholder='Password'/>
-          <button onClick={()=>setStatusLogin(true)}> Login </button>
+          <input type="text" placeholder='Login' onChange={(x)=>setLogin(x.target.value)}/>
+          <input type="password" placeholder='Password' onChange={(x)=>setPassword(x.target.value)}/>
+          <text style={{color:"red"}}>{errorLogin}</text>
+          <button onClick={(e)=>userStatus(e)}> Login </button>
         </>:<>
           <h2>Dodaj <br />ogłoszenie</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>

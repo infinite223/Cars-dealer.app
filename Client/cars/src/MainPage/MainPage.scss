@@ -4,12 +4,13 @@
     width: 100%;
     min-height: 100vh;
 
-    background-color: rgb(199, 203, 192);
+    background-color: rgb(99, 99, 99);
 
 
     nav {
         position: fixed;
         z-index: 2;
+
         width: 500px;
         height: 100vh;
 
@@ -42,9 +43,11 @@
 
             .nav-close{
                 position: absolute;
+                z-index: 4;
+
                 left: 20px;
                 top:15px;
-                z-index: 4;
+                
         
                 transform: rotate(180deg);
                 transition-delay: 1s;
@@ -53,12 +56,16 @@
 
             button{
                 position: absolute;
+                
                 right: 20px;
                 top:-5px;
 
                 &:hover{
                     border: .05rem solid white;
                     color: rgb(236, 85, 85);
+
+                    transition: all ease-in-out;
+                    transition-duration: .3s;
                 }
             }
         }
