@@ -1,15 +1,10 @@
-import React, { useState } from 'react'
 import "./MainPage.scss"
-import { MdOutlineArrowBackIos } from "react-icons/md"
-import { AnimatePresence, motion, useCycle } from "framer-motion";
-
-
-import { Ads } from "./Ads/Ads.tsx"
-import { NavContent } from "../Components/NavContent/NavContent.tsx"
+import { useState, AnimatePresence, motion, useCycle, MdOutlineArrowBackIos, Ads, NavContent} from "../imports.ts";
 
 export const MainPage = () => {
   const [open, cycleOpen] = useCycle(true, false);
-  const [statusLogin, setStatusLogin] = useState(false)
+  const [statusLogin, setStatusLogin] = useState(null)
+  const [toggleMyAds, setToggleMyAds] = useState(false)
   const [refreshAds, setRefreshAds] = useState(false)
 
   return (
@@ -41,14 +36,18 @@ export const MainPage = () => {
              </AnimatePresence>
                   
             <div className='content flex'>
-                <div className='content__nav'>
+                <div className='content__nav'>               
                   {!open &&<motion.div className='nav-close' >
                       <MdOutlineArrowBackIos size={25} onClick={cycleOpen}>{open ? "Close" : "Open"}</MdOutlineArrowBackIos>
                    </motion.div>}
 
-                  {statusLogin &&<button onClick={()=>setStatusLogin(false)}>Logout</button>}
+                  {statusLogin && <div> 
+                    <h2>{statusLogin.userName}</h2>
+                    <button className="button-ads" onClick={()=>setToggleMyAds(!toggleMyAds)}>{!toggleMyAds?"My ads":"All ads"}</button>
+                    <button onClick={()=> (setStatusLogin(null),setToggleMyAds(false))}>Logout</button>
+                  </div>}
                 </div>
-                <Ads refreshAds={refreshAds}/>
+                <Ads user={statusLogin&&statusLogin} toggleMyAds={toggleMyAds} refreshAds={refreshAds}/>
             </div>
     </div>
   )

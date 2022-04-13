@@ -1,21 +1,21 @@
-import React, {useState,useEffect} from 'react'
-import { Ad } from '../../Components/Ad/Ad.tsx'
-import { fetchAds } from '../../Requests/Requests.ts'
-import { userAds } from '../../Requests/Requests.ts' 
-import { randomImagesCars } from '../../Requests/Requests.ts'
-
+import { useState, useEffect, Ad, randomImagesCars, userAds, fetchAds } from './../../imports.ts'
 import "./Ads.scss"
 
-export const Ads = ({ refreshAds }) => {
+export const Ads = ({ user, refreshAds, toggleMyAds }) => {
     const [ads, setAds] = useState([]);
-    const [imageNumber, setImageNumber] = useState(0)
 
     useEffect(() => {
-        //fetchAds().then((ads) => {
-            userAds(2).then((ads) => {
-        setAds(ads)
-        });
-    }, []);
+        if(toggleMyAds){
+            userAds(user.userId).then((ads) => {
+            setAds(ads)
+          });
+        }
+        else{
+            fetchAds().then((ads) => {
+            setAds(ads)
+          });
+        }
+    }, [refreshAds,toggleMyAds]);
 
   return (
     <div className='Ads-conteiner'>

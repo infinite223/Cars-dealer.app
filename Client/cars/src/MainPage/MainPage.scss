@@ -41,6 +41,14 @@
             background: rgb(1,1,1);
             background: linear-gradient(120deg, rgb(63, 66, 62) 23%, rgba(32,30,30,0.9727241238292192) 49%, rgba(42,40,40,0.9727241238292192) 90%);
 
+            h2{
+                margin-top:8px;
+
+                text-align: center;
+                letter-spacing: 3px;
+                font-size: 30px;
+            }
+
             .nav-close{
                 position: absolute;
                 z-index: 4;
@@ -60,12 +68,25 @@
                 right: 20px;
                 top:-5px;
 
+                border-radius: 5px;
+
                 &:hover{
                     border: .05rem solid white;
                     color: rgb(236, 85, 85);
 
                     transition: all ease-in-out;
                     transition-duration: .3s;
+                }
+            }
+
+            .button-ads{
+                position: absolute;
+                
+                right: 130px;
+                top:-5px;
+
+                &:hover {
+                    color: rgb(108, 85, 241);
                 }
             }
         }

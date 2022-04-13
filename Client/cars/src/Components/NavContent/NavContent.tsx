@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import { useState, addAds, loginUser } from './../../imports.ts'
 import './NavContent.scss'
-import { addAds } from '../../Requests/Requests.ts'
-import { loginUser } from '../../Requests/Requests.ts'
+
 export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLogin }) => {
+
   const [login, setLogin] = useState("")
   const [password, setPassword] = useState("")
   const [errorLogin, setErrorLogin] = useState("")
@@ -13,7 +12,7 @@ export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLo
   const [description, setDescription] = useState("")
 
   const newAd = {
-    "UserId":1,
+    "UserId":statusLogin?statusLogin.userId:1,
     "CategoryId":category,
     "TitleAd":model,
     "DescriptionAd":description
@@ -22,8 +21,8 @@ export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLo
   const userStatus = async (event) =>{
     event.preventDefault();
     const user = await loginUser(login, password)
-    if(user!="error"){
-      setStatusLogin(true);
+    if(user!="error" && user){
+      setStatusLogin(user);
       setErrorLogin("")
     }
     else{

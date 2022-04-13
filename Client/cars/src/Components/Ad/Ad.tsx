@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
-import { AiOutlineCloseSquare } from "react-icons/ai"
+import { useState, AiOutlineCloseSquare } from './../../imports.ts'
+import loupe from './../../icons/loupe.png'
 import "./Ad.scss"
-import { randomImagesCars } from '../../Requests/Requests.ts'
-import loupe from "../../icons/loupe.png"
 
 export const Ad = ({ adId, title, description, image}) => {
   const [toggleFullAd, setToggleFullAd] = useState(false)

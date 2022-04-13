@@ -8,7 +8,7 @@
     min-width: 370px;
     min-height: 230px;
 
-    background-color: rgb(151, 151, 151);
+    background-color: rgb(188, 185, 185);
 
     margin: 4px auto;
     
@@ -105,7 +105,7 @@
         width: 70%;
         height: 100%;
 
-        background-color: rgb(147, 136, 136);
+        background-color: rgba(189, 189, 189,.7);
 
         img {
             width: 100%;
@@ -124,9 +124,12 @@
             font-size: 19px;       
         }
 
-
         h3, p {
             padding: .5rem;
+        }
+
+        p {
+            width: 80%;
         }
     }
 
