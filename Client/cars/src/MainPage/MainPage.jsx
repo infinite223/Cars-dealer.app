@@ -47,7 +47,7 @@ export const MainPage = () => {
                     <button onClick={()=> (setStatusLogin(null),setToggleMyAds(false))}>Logout</button>
                   </div>}
                 </div>
-                <Ads user={statusLogin&&statusLogin} toggleMyAds={toggleMyAds} refreshAds={refreshAds}/>
+                <Ads user={statusLogin&&statusLogin} toggleMyAds={toggleMyAds} refreshAds={refreshAds} setRefreshAds={setRefreshAds}/>
             </div>
     </div>
   )

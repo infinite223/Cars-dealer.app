@@ -19,8 +19,16 @@ export const userAds = async ( userId ) => {
   }
 };
 
-export const loginUser = async (login, password) => {
+export const removeAd = async ( adId ) => {
+  try{
+    const { data: noContent } = await axios.get(`http://localhost:5000/api/v2/ad/${adId}`);
+    return noContent;
+  }catch(error){
+    return "error";
+  }
+};
 
+export const loginUser = async (login, password) => {
   try{
     const { data: user } = await axios.get(`https://localhost:5001/api/v2/user/login/${login}/${password}`);
     return user;

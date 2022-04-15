@@ -1,8 +1,8 @@
-import { useState, AiOutlineCloseSquare } from './../../imports.ts'
+import { useState, AiOutlineCloseSquare, removeAd } from './../../imports.ts'
 import loupe from './../../icons/loupe.png'
 import "./Ad.scss"
 
-export const Ad = ({ adId, title, description, image}) => {
+export const Ad = ({ toggleMyAds, adId, title, description, image, refreshAds, setRefreshAds}) => {
   const [toggleFullAd, setToggleFullAd] = useState(false)
 
   return (
@@ -25,6 +25,10 @@ export const Ad = ({ adId, title, description, image}) => {
           <div className='full_Ad-info'>
             <h3>{title}</h3>
             <p>{description}</p>
+            {toggleMyAds&&<div className='full_Ad-options flex'>
+            <button className='button-edit'>Edit</button>
+            <button className='button-remove' onClick={()=>(removeAd(adId),setRefreshAds(refreshAds))}>Remove Ad</button>
+          </div>}
           </div>
         </div>
       }

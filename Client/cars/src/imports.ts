@@ -13,4 +13,4 @@ export { randomImagesCars } from './Requests/Requests.ts';
 export { userAds } from './Requests/Requests.ts' 
 export { fetchAds } from './Requests/Requests.ts'
 export { addAds } from './Requests/Requests.ts'
-export { loginUser } from './Requests/Requests.ts'
+export { loginUser, removeAd } from './Requests/Requests.ts'

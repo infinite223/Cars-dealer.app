@@ -114,10 +114,12 @@
     }
 
     .full_Ad-info{
+        position: relative;
+
         width: 30%;
         height: 100%;
 
-        background-color: rgba(125, 127, 126,.94);
+        background-color: rgba(76, 77, 77, 0.94);
 
         h3 {        
             letter-spacing: .2em;   
@@ -131,10 +133,27 @@
         p {
             width: 80%;
         }
+
+        .full_Ad-options { 
+            position: absolute; 
+            bottom: 1px;
+    
+            width: 100%;
+        }
+        .button-remove{  
+            width: 120px;
+
+            margin-left: 15px;
+    
+            &:hover{
+                color: rgb(236, 85, 85);
+            }
+        }
     }
 
     .exit-icon{
         position: absolute;
+        z-index: 10;
 
         right: 20px;
         top: 20px;

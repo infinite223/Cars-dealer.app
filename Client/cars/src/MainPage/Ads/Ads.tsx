@@ -1,7 +1,7 @@
 import { useState, useEffect, Ad, randomImagesCars, userAds, fetchAds } from './../../imports.ts'
 import "./Ads.scss"
 
-export const Ads = ({ user, refreshAds, toggleMyAds }) => {
+export const Ads = ({ user, refreshAds, setRefreshAds, toggleMyAds }) => {
     const [ads, setAds] = useState([]);
 
     useEffect(() => {
@@ -21,7 +21,15 @@ export const Ads = ({ user, refreshAds, toggleMyAds }) => {
     <div className='Ads-conteiner'>
         {
             ads.map((ad,i) => {
-                return <Ad key={i} adId={ad.adId} image={randomImagesCars[i+1]} title={ad.titleAd} description={ad.descriptionAd}/>
+                return <Ad 
+                  key={i} 
+                  refreshAds={refreshAds} 
+                  setRefreshAds={setRefreshAds}
+                  toggleMyAds={toggleMyAds} 
+                  adId={ad.adId}
+                  image={randomImagesCars[i+1]}
+                  title={ad.titleAd}
+                  description={ad.descriptionAd}/>
             })
         }
     </div>
