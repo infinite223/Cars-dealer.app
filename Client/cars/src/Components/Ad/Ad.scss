@@ -8,7 +8,7 @@
     min-width: 370px;
     min-height: 230px;
 
-    background-color: rgb(188, 185, 185);
+    background-color: rgb(124, 123, 123);
 
     margin: 4px auto;
     
@@ -101,11 +101,14 @@
     margin-top: -210px;
     margin-left: -450px;
 
+    border: 3px solid rgb(55, 54, 54);
+
     .full_Ad-img{
         width: 70%;
         height: 100%;
 
-        background-color: rgba(189, 189, 189,.7);
+        background-color: rgba(99, 99, 99,.7);
+        border: none;
 
         img {
             width: 100%;
@@ -124,6 +127,7 @@
         h3 {        
             letter-spacing: .2em;   
             font-size: 19px;       
+            color: white;
         }
 
         h3, p {
@@ -132,6 +136,8 @@
 
         p {
             width: 80%;
+
+            color: rgb(207, 193, 193);
         }
 
         .full_Ad-options { 

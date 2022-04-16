@@ -21,7 +21,7 @@ export const userAds = async ( userId ) => {
 
 export const removeAd = async ( adId ) => {
   try{
-    const { data: noContent } = await axios.get(`http://localhost:5000/api/v2/ad/${adId}`);
+    const { data: noContent } = await axios.delete(`http://localhost:5000/api/v2/ad/${adId}`);
     return noContent;
   }catch(error){
     return "error";

@@ -27,7 +27,7 @@ export const Ad = ({ toggleMyAds, adId, title, description, image, refreshAds, s
             <p>{description}</p>
             {toggleMyAds&&<div className='full_Ad-options flex'>
             <button className='button-edit'>Edit</button>
-            <button className='button-remove' onClick={()=>(removeAd(adId),setRefreshAds(refreshAds))}>Remove Ad</button>
+            <button className='button-remove' onClick={()=>(removeAd(adId),setRefreshAds(!refreshAds),setToggleFullAd(false))}>Remove Ad</button>
           </div>}
           </div>
         </div>
