@@ -1,17 +1,26 @@
-import { useState, useEffect, Ad, randomImagesCars, userAds, fetchAds } from './../../imports.ts'
+import { useState, useEffect, Ad, randomImagesCars, userAds, fetchAds } from './../../imports'
 import "./Ads.scss"
 
-export const Ads = ({ user, refreshAds, setRefreshAds, toggleMyAds }) => {
+interface Props {
+  user : {
+    userId: number;
+  };
+  refreshAds:boolean;
+  setRefreshAds:boolean;
+  toggleMyAds:boolean;
+}
+
+export const Ads: React.FC<Props> = ({ user, refreshAds, setRefreshAds, toggleMyAds }) => {
     const [ads, setAds] = useState([]);
 
     useEffect(() => {
         if(toggleMyAds){
-            userAds(user.userId).then((ads) => {
+            userAds(user.userId).then((ads:any) => {
             setAds(ads)
           });
         }
         else{
-            fetchAds().then((ads) => {
+            fetchAds().then((ads:any) => {
             setAds(ads)
           });
         }
@@ -20,7 +29,7 @@ export const Ads = ({ user, refreshAds, setRefreshAds, toggleMyAds }) => {
   return (
     <div className='Ads-conteiner'>
         {
-            ads.map((ad,i) => {
+            ads.map((ad:any,i:number) => {
                 return <Ad 
                   key={i} 
                   refreshAds={refreshAds} 

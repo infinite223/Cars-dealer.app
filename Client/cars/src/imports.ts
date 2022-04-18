@@ -5,12 +5,12 @@ export { AnimatePresence, motion, useCycle } from "framer-motion";
 export { MdOutlineArrowBackIos } from "react-icons/md"
 export { AiOutlineCloseSquare } from "react-icons/ai"
 
-export { Ads } from './MainPage/Ads/Ads.tsx';
-export { Ad } from './Components/Ad/Ad.tsx';
-export { NavContent } from './Components/NavContent/NavContent.tsx';
+export { Ads } from './MainPage/Ads/Ads';
+export { Ad } from './Components/Ad/Ad';
+export { NavContent } from './Components/NavContent/NavContent';
 
-export { randomImagesCars } from './Requests/Requests.ts';
-export { userAds } from './Requests/Requests.ts' 
-export { fetchAds } from './Requests/Requests.ts'
-export { addAds } from './Requests/Requests.ts'
-export { loginUser, removeAd } from './Requests/Requests.ts'
+export { randomImagesCars } from './Requests/Requests';
+export { userAds } from './Requests/Requests' 
+export { fetchAds } from './Requests/Requests'
+export { addAds } from './Requests/Requests'
+export { loginUser, removeAd } from './Requests/Requests'

@@ -1,25 +1,32 @@
 import axios from "axios";
 
+interface NewAd {
+    UserId:number;
+    CategoryId?:number;
+    TitleAd?:string;
+    DescriptionAd?:string;
+
+}
 export const fetchAds = async () => {
     const { data: ads } = await axios.get("https://localhost:5001/api/v2/ad/allAds");
     return ads;
 };
 
-export const addAds = async ( newAd ) => {
+export const addAds = async ( newAd:NewAd ) => {
     if(newAd.TitleAd && newAd.TitleAd!==null){
         const { data: ad } = await axios.post("http://localhost:5000/api/v2/ad",newAd);
         return ad!=null?"dodano":"nie udało się dodać";
     }
   };
 
-export const userAds = async ( userId ) => {
+export const userAds = async ( userId:number ) => {
   if(userId){
     const { data: userAds } = await axios.get(`https://localhost:5001/api/v2/ad/userAds/${userId}`);
     return userAds;
   }
 };
 
-export const removeAd = async ( adId ) => {
+export const removeAd = async ( adId:number ) => {
   try{
     const { data: noContent } = await axios.delete(`http://localhost:5000/api/v2/ad/${adId}`);
     return noContent;
@@ -28,7 +35,7 @@ export const removeAd = async ( adId ) => {
   }
 };
 
-export const loginUser = async (login, password) => {
+export const loginUser = async (login:string, password:string) => {
   try{
     const { data: user } = await axios.get(`https://localhost:5001/api/v2/user/login/${login}/${password}`);
     return user;

@@ -1,5 +1,6 @@
 import "./MainPage.scss"
-import { useState, AnimatePresence, motion, useCycle, MdOutlineArrowBackIos, Ads, NavContent} from "../imports.ts";
+import { useState, AnimatePresence, motion, useCycle, MdOutlineArrowBackIos, Ads, NavContent} from "../imports";
+import { MouseEventHandler } from "react";
 
 export const MainPage = () => {
   const [open, cycleOpen] = useCycle(true, false);

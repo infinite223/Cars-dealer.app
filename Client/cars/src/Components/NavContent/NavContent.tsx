@@ -1,7 +1,14 @@
-import { useState, addAds, loginUser } from './../../imports.ts'
+import { useState, addAds, loginUser } from './../../imports'
 import './NavContent.scss'
 
-export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLogin }) => {
+interface Props {
+  statusLogin:any;
+  setStatusLogin:any;
+  refreshAds:boolean;
+  setRefreshAds:any;
+}
+
+export const NavContent:React.FC<Props> = ({ refreshAds, setRefreshAds, statusLogin, setStatusLogin }) => {
 
   const [login, setLogin] = useState("")
   const [password, setPassword] = useState("")
@@ -18,7 +25,7 @@ export const NavContent = ({ refreshAds, setRefreshAds, statusLogin, setStatusLo
     "DescriptionAd":description
   }
 
-  const userStatus = async (event) =>{
+  const userStatus = async (event:any) =>{
     event.preventDefault();
     const user = await loginUser(login, password)
     if(user!="error" && user){

@@ -1,8 +1,18 @@
-import { useState, AiOutlineCloseSquare, removeAd } from './../../imports.ts'
+import { useState, AiOutlineCloseSquare, removeAd } from './../../imports'
 import loupe from './../../icons/loupe.png'
 import "./Ad.scss"
 
-export const Ad = ({ toggleMyAds, adId, title, description, image, refreshAds, setRefreshAds}) => {
+interface Props {
+  toggleMyAds:boolean;
+  adId:number;
+  title:string;
+  description:string;
+  image:string;
+  refreshAds:boolean;
+  setRefreshAds:any;
+}
+
+export const Ad:React.FC<Props> = ({ toggleMyAds, adId, title, description, image, refreshAds, setRefreshAds}) => {
   const [toggleFullAd, setToggleFullAd] = useState(false)
 
   return (
