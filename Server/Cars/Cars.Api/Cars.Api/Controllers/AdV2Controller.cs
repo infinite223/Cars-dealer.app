@@ -46,6 +46,13 @@ namespace Cars.Api.Controllers
             return Ok(ads);
         }
         
+        [HttpGet("allMedias", Name = "GetAllMedias")]
+        public async Task<IActionResult> GetMedias()
+        {
+            var medias = _context.Media.Where(x => x.MediaId != 0);
+            return Ok(medias);
+        }
+        
         [ValidateModel]
         public async Task<IActionResult> Post([FromBody] IServices.Requests.CreateAd createAd)
         {

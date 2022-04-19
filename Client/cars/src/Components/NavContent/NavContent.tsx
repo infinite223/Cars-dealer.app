@@ -1,11 +1,20 @@
 import { useState, addAds, loginUser } from './../../imports'
 import './NavContent.scss'
 
+interface StatusLogin {
+  userId:number;
+  userName:string;
+  email?:string;
+  login:string;
+  password:string;
+}
+
+
 interface Props {
-  statusLogin:any;
-  setStatusLogin:any;
-  refreshAds:boolean;
-  setRefreshAds:any;
+  statusLogin:StatusLogin | null;
+  setStatusLogin:(React.Dispatch<React.SetStateAction<StatusLogin | null>>);
+  refreshAds:number;
+  setRefreshAds:(React.Dispatch<React.SetStateAction<number>>);
 }
 
 export const NavContent:React.FC<Props> = ({ refreshAds, setRefreshAds, statusLogin, setStatusLogin }) => {
@@ -28,7 +37,7 @@ export const NavContent:React.FC<Props> = ({ refreshAds, setRefreshAds, statusLo
   const userStatus = async (event:any) =>{
     event.preventDefault();
     const user = await loginUser(login, password)
-    if(user!="error" && user){
+    if(user!=="error" && user){
       setStatusLogin(user);
       setErrorLogin("")
     }
@@ -57,10 +66,10 @@ export const NavContent:React.FC<Props> = ({ refreshAds, setRefreshAds, statusLo
                 <option value={2}>2. Combi</option>
                 <option value={3}>3. hatchback</option>
                 <option value={4}>4. Coupe</option>
-                <option value={5}>5. SUV</option>
+                <option value={5}>5. SUV</option> 
            </select>
           <textarea  placeholder='Opis' onChange={(x)=>setDescription(x.target.value)}/>
-          <button onClick={()=>(addAds(newAd),setRefreshAds(!refreshAds))}> Dodaj </button>    
+          <button onClick={async ()=>(await addAds(newAd), await setRefreshAds(refreshAds+1))}> Dodaj </button>    
         </> 
         }        
     </div>

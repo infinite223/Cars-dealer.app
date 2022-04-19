@@ -41,6 +41,7 @@ namespace Cars.Api.Controllers
             var user = await _context.User.FirstOrDefaultAsync(x => x.Login == login);
             if (user.Password==password)
             {
+                user.Password = null;
                 return Ok(user);
             }
             else
