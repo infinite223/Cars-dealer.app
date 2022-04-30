@@ -1,5 +1,6 @@
 import { useState, AiOutlineCloseSquare, removeAd } from './../../imports'
 import loupe from './../../icons/loupe.png'
+import { motion } from 'framer-motion';
 import "./Ad.scss"
 import { editAds } from '../../Requests/Requests';
 
@@ -40,11 +41,12 @@ export const Ad:React.FC<Props> = ({ toggleMyAds, adId, title, description, imag
         </div>
       </div>
       {toggleFullAd &&
-        <div className='full__Ad'>
+        <motion.div className='full__Ad' initial={{opacity:0}} animate={{opacity:1}}>
           <AiOutlineCloseSquare size={32} className='exit-icon' onClick={()=>setToggleFullAd(false)}/>
           <div className='full_Ad-img'>
             <div className="Ad-id">id: {adId}</div>
-            <img src={image}/>
+           
+            {image ?<img src={image}/>:<text className='Ad-no-images flex'>No images</text>}
           </div>
           <div className='full_Ad-info'>
             {toggleEditAd&&<h3>Edit...</h3>}
@@ -56,7 +58,7 @@ export const Ad:React.FC<Props> = ({ toggleMyAds, adId, title, description, imag
             <button className='button-remove' onClick={async ()=>(await removeAd(adId),await setRefreshAds(refreshAds+1),setToggleFullAd(false))}>Remove Ad</button>
           </div>}
           </div>
-        </div>
+        </motion.div>
       }
     </>
   )

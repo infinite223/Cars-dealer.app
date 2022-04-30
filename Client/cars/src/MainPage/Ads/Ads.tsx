@@ -40,7 +40,7 @@ export const Ads: React.FC<Props> = ({ user, refreshAds, setRefreshAds, toggleMy
   }, []);
 
   return (
-    <div className='Ads-conteiner'>
+    <div className='Ads-conteiner'  >
         {
             ads.map((ad:Ad,i:number) => {              
                 const foundMedia = medias.find((media:any)=>media.adId===ad.adId)             
